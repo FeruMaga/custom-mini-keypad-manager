@@ -1,0 +1,289 @@
+.editor-panel {
+  background: linear-gradient(135deg, #22262eeb, #191c21e8);
+  border: 1px solid #34394499;
+  border-radius: 22px;
+  padding: 34px;
+  box-shadow:
+    inset 0 1px 0 #ffffff03,
+    0 24px 65px #0002;
+  min-width: 0;
+}
+
+.editor-heading h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  font-weight: 650;
+}
+
+.editor-heading p {
+  color: #a9b2c5;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.categories {
+  display: flex;
+  gap: 12px;
+  margin: 28px 0 34px;
+}
+
+.categories button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #2a2e37, #252932);
+  color: #b4bdcf;
+  padding: 16px 19px;
+  font-size: 15px;
+}
+
+.categories button.active {
+  background: linear-gradient(125deg, #4e586e, #414a5e);
+  color: #fff;
+  border-color: #65708944;
+  box-shadow: inset 0 1px 1px #ffffff0a;
+}
+
+h2 {
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  font-weight: 600;
+}
+
+.helper {
+  font-size: 14px;
+  color: #a5afc1;
+  margin-top: 7px;
+}
+
+.combination {
+  min-height: 73px;
+  border: 1px solid #373e4a;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #252a33, #22262e);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  margin: 17px 0;
+}
+
+.combination-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.combination-part {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+kbd {
+  font-family: inherit;
+  font-size: 20px;
+  min-width: 62px;
+  padding: 9px 16px;
+  border: 1px solid #444d5d;
+  box-shadow:
+    0 1px 1px #ffffff0b,
+    inset 0 1px 4px #ffffff03;
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(125deg, #303744, #272c36);
+}
+
+.plus {
+  color: #c0c8d8;
+  font-size: 21px;
+}
+
+.clear-button {
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  background: #454d5b;
+  color: #c8d1e1;
+}
+
+.placeholder {
+  color: #99a4b6;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.modifier-bar {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.modifier-bar button {
+  padding: 10px 18px;
+  border: 1px solid #343943;
+  border-radius: 9px;
+  background: linear-gradient(#2b3039, #242831);
+  font-size: 12px;
+}
+
+.modifier-bar .active,
+.action-grid .active {
+  background: linear-gradient(120deg, #287eff, #1760f6);
+  border-color: #3687ff;
+  color: white;
+  box-shadow: inset 0 1px 2px #ffffff20;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 5px;
+}
+
+.keyboard-row button {
+  min-width: 0;
+  flex: 1;
+  padding: 10px 0;
+  border: 1px solid #353a44;
+  border-bottom-color: #292e37;
+  background: linear-gradient(130deg, #30353e, #242932);
+  box-shadow: inset 0 1px 1px #ffffff04;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+.keyboard-row .wide-key {
+  flex: 1.45;
+}
+
+.keyboard-row .space-key {
+  flex: 5.7;
+}
+
+.keyboard-row .chosen {
+  border-color: #658cc466;
+  background: linear-gradient(130deg, #374762, #29364d);
+  color: #d7e7ff;
+}
+
+.editor-note {
+  font-size: 10px;
+  color: #909caf;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.editor-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-top: 1px solid #ffffff09;
+  margin-top: 28px;
+  padding-top: 20px;
+}
+
+.editor-footer p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #98a4b8;
+}
+
+.status-dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: #6885b2;
+  flex-shrink: 0;
+}
+
+.profile-label {
+  margin-left: auto;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #909caf;
+  white-space: nowrap;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-height: 245px;
+  align-content: start;
+}
+
+.action-grid button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #363e4b;
+  border-radius: 10px;
+  background: #292f39;
+  padding: 18px 12px;
+  text-align: left;
+  font-size: 13px;
+}
+
+/* Keep the clear control centered and inside long combinations. */
+.combination-keys {
+  min-width: 0;
+  flex: 1;
+}
+
+.combination-part {
+  min-width: 0;
+}
+
+.combination kbd {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.clear-button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  line-height: 1;
+}
+
+.clear-button svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.categories {
+  flex-wrap: wrap;
+}
+
+.categories button {
+  flex: 1;
+}
+
+.action-grid {
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+}
+
+.action-grid button {
+  min-width: 0;
+  line-height: 1.4;
+}

@@ -1,0 +1,162 @@
+.led-editor {
+  max-width: 520px;
+  padding-top: 24px;
+}
+.led-color-row {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+.led-wheel {
+  position: relative;
+  flex: 0 0 160px;
+  height: 160px;
+  border-radius: 50%;
+  cursor: crosshair;
+  touch-action: none;
+  background:
+    radial-gradient(circle, white, transparent 70%),
+    conic-gradient(red, #ff0, #0f0, #0ff, #00f, #f0f, red);
+}
+.led-wheel-marker {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 4px #0009;
+  pointer-events: none;
+}
+.led-color-fields {
+  flex: 1;
+  min-width: 0;
+  max-width: 240px;
+}
+.led-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #949dae;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.led-editor input:not([type='range']),
+.led-editor select {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid #343944;
+  border-radius: 6px;
+  background: #20242b;
+  color: #d7dce5;
+  padding: 9px;
+  font: inherit;
+}
+.led-hex-input {
+  display: flex;
+  gap: 6px;
+}
+.led-editor .led-hex-input input[type='color'] {
+  flex: 0 0 32px;
+  height: 34px;
+  padding: 3px;
+  cursor: pointer;
+}
+.led-rgb {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+.led-editor input[aria-invalid='true'] {
+  border-color: #f38798;
+}
+.led-slider-row {
+  display: grid;
+  grid-template-columns: 85px 20px minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #b8c0ce;
+}
+.led-slider-row output {
+  text-align: right;
+  font-size: 11px;
+  color: #99a5b7;
+}
+.led-slider-row input {
+  appearance: none;
+  width: 100%;
+  margin: 0;
+  height: 5px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #3385ff var(--fill), #303641 var(--fill));
+  cursor: pointer;
+}
+.led-slider-row input::-webkit-slider-thumb {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #f6f8ff;
+  box-shadow: 0 1px 5px #0006;
+}
+.led-slider-row input::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #f6f8ff;
+}
+.led-divider {
+  height: 1px;
+  background: #ffffff08;
+  margin: 24px 0;
+}
+.led-effect-select {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #b8c0ce;
+}
+.led-effects {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.led-effects button {
+  flex: 1;
+  padding: 10px 12px;
+  background: #242932;
+  border: 1px solid #353c48;
+  border-radius: 7px;
+  font-size: 11px;
+}
+.led-effects button.active {
+  border-color: #4298ff;
+  background: #233c5b;
+  box-shadow: 0 0 0 1px #4298ff22;
+}
+.led-editor input:focus-visible,
+.led-editor select:focus-visible {
+  outline: 2px solid #85b8ff;
+  outline-offset: 3px;
+}
+@media (max-width: 480px) {
+  .led-color-row {
+    gap: 18px;
+  }
+  .led-wheel {
+    flex-basis: 120px;
+    height: 120px;
+  }
+  .led-slider-row {
+    grid-template-columns: 68px 14px minmax(0, 1fr) 32px;
+    gap: 8px;
+  }
+}

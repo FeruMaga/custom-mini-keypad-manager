@@ -1,0 +1,48 @@
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 19% 50%, #34383f66, transparent 40%),
+    linear-gradient(125deg, #1b1e23, #121417);
+}
+
+.app-header {
+  height: 64px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(120deg, #252932, #20232a);
+  border-bottom: 1px solid #ffffff04;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+}
+
+.brand-mark {
+  display: grid;
+  grid-template-columns: repeat(2, 9px);
+  gap: 3px;
+  transform: rotate(-3deg);
+}
+
+.brand-mark i {
+  height: 9px;
+  border-radius: 3px;
+  background: #aeb6ca;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(290px, 0.8fr) minmax(690px, 1.65fr);
+  gap: 30px;
+  padding: 36px 30px 32px;
+  max-width: 1800px;
+  margin: auto;
+  min-height: calc(100vh - 64px);
+  align-items: center;
+}

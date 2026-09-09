@@ -1,0 +1,250 @@
+.device-panel {
+  text-align: center;
+  min-width: 0;
+  align-self: center;
+}
+
+.device-scene {
+  height: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+  padding-top: 50px;
+}
+
+.device {
+  position: relative;
+  width: 290px;
+  height: 440px;
+  border-radius: 27px;
+  background: linear-gradient(
+    115deg,
+    #fafcffbd,
+    #b7bbc36e 25%,
+    #e8edf29c 48%,
+    #939aa372 80%,
+    #e2e4e8b0
+  );
+  border: 3px solid #d1d5dcc4;
+  box-shadow:
+    inset 0 0 0 5px #ffffff35,
+    inset 0 0 22px #ffffff7a,
+    0 10px 0 #858990,
+    0 15px 0 #303237,
+    0 25px 0 #0a0b0d,
+    10px 45px 35px #000b;
+  transform: rotateX(29deg) rotateZ(17deg);
+  transform-style: flat;
+}
+
+.screw {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 20%, #fff, #afb3b8 50%, #494b4e 80%);
+  box-shadow: 0 2px 3px #0008;
+}
+
+.screw:after {
+  content: '+';
+  position: absolute;
+  inset: 0;
+  color: #53565a;
+  font-size: 16px;
+  line-height: 15px;
+}
+
+.s1 {
+  top: 13px;
+  left: 13px;
+}
+
+.s2 {
+  top: 13px;
+  right: 13px;
+}
+
+.s3 {
+  bottom: 13px;
+  left: 13px;
+}
+
+.s4 {
+  bottom: 13px;
+  right: 13px;
+}
+
+.knob {
+  position: absolute;
+  left: 99px;
+  top: -52px;
+  width: 100px;
+  height: 113px;
+  border: 2px solid #85878a;
+  border-radius: 48% 48% 38% 38%;
+  background: repeating-linear-gradient(90deg, #101113 0, #101113 5px, #33363b 7px, #101113 10px);
+  box-shadow: 5px 12px 7px #0007;
+  z-index: 2;
+}
+
+.knob > span {
+  position: absolute;
+  top: -3px;
+  left: -2px;
+  width: 100px;
+  height: 73px;
+  border: 2px solid #a8a8a8;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 20deg,
+    #26282a,
+    #a2a3a4,
+    #323437,
+    #787a7d,
+    #232528,
+    #919395,
+    #26282a
+  );
+  box-shadow:
+    0 5px 0 #08090a,
+    0 7px 0 #929599;
+}
+
+.knob > span:after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 18px;
+  right: 21px;
+  top: 8px;
+  background: #f4f5f6;
+  transform: rotate(33deg);
+}
+
+.knob.selected {
+  box-shadow:
+    0 0 0 3px #378dff,
+    0 0 25px #237aff;
+}
+
+.device-keys {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 20px;
+  position: absolute;
+  top: 100px;
+  left: 31px;
+  right: 31px;
+}
+
+.device-key {
+  height: 76px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(100deg, #070809, #202226 65%, #050606);
+  box-shadow:
+    0 13px 0 #090a0b,
+    0 16px 0 #33373a,
+    4px 21px 8px #0008;
+  position: relative;
+  transform-style: flat;
+}
+
+.key-cap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid #48494c;
+  border-radius: 11px;
+  background: radial-gradient(ellipse at 20% 0, #45474b, #24262a 60%, #17191c);
+  box-shadow: inset 0 1px 1px #ffffff30;
+  display: grid;
+  place-items: center;
+}
+
+.selected .key-cap {
+  border: 2px solid #a3d9ff;
+  box-shadow:
+    0 0 5px #fff,
+    0 0 13px #2488ff,
+    0 0 27px #1470ff99,
+    inset 0 0 14px #1470ff44;
+}
+
+.key-label {
+  font-size: 13px;
+  color: #a7adb7;
+}
+
+.selected .key-label {
+  color: #c5ddff;
+}
+
+.key-tag {
+  pointer-events: none;
+  position: absolute;
+  top: -43px;
+  left: 20px;
+  background: #2478ff;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 14px;
+  transform: rotate(-17deg);
+}
+
+.key-tag:after {
+  content: '';
+  position: absolute;
+  height: 23px;
+  width: 1px;
+  background: #5aa4ff;
+  top: 26px;
+  left: 50%;
+}
+
+.device-instruction {
+  font-size: 14px;
+  color: #abb3c4;
+  margin: 22px 0;
+}
+
+.dial-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dial-controls button {
+  border: 1px solid #ffffff09;
+  background: #23272d;
+  color: #aeb6c6;
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.dial-controls button[aria-pressed='true'] {
+  background: #245bb7;
+  color: white;
+}
+
+.device-caption {
+  display: block;
+  font-size: 9px;
+  color: #8994a7;
+  letter-spacing: 2.2px;
+  margin-top: 17px;
+}
+
+/* Decorative labels cannot intercept clicks on neighboring controls. */
+.screw,
+.knob > span {
+  pointer-events: none;
+}
+.device-key {
+  isolation: isolate;
+}
