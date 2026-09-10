@@ -4,9 +4,12 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  server: { port: 5173, strictPort: true },
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
+  server: {
+    port: 5173,
+    strictPort: true,
+    watch: {
+      ignored: ['**/src-tauri/target/**'],
+    },
+  },
+  plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
 })
