@@ -92,9 +92,20 @@ pub fn apply_assignment(
             device::write_payload(&hid_device, report_id, protocol::led_commit_payload())?;
         }
         "System" => {
-            return Err(
-                "System actions need to be mapped to keyboard shortcuts before applying".into(),
-            );
+            let action = assignment
+                .keys
+                .first()
+                .ok_or("Choose a system action before applying")?;
+            let shortcut = protocol::system_shortcut(action)
+                .ok_or_else(|| format!("Unsupported system action: {action}"))?;
+            let keys: Vec<String> = shortcut.iter().map(|key| key.to_string()).collect();
+
+            for payload in
+                protocol::keyboard_payloads(control, report_id, protocol::DEFAULT_LAYER, &keys)?
+            {
+                device::write_payload(&hid_device, report_id, payload)?;
+            }
+            device::write_payload(&hid_device, report_id, protocol::commit_payload())?;
         }
         _ => {
             return Err(format!(

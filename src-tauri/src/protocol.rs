@@ -107,6 +107,12 @@ pub fn mouse_payload(
         "Right Click" => [2, 0, 0, 0, 0],
         "Scroll Up" => [0, 0, 0, 1, 0],
         "Scroll Down" => [0, 0, 0, 255, 0],
+        "Ctrl + Scroll Up" => [0, 0, 0, 1, 1],
+        "Ctrl + Scroll Down" => [0, 0, 0, 255, 1],
+        "Shift + Scroll Up" => [0, 0, 0, 1, 2],
+        "Shift + Scroll Down" => [0, 0, 0, 255, 2],
+        "Alt + Scroll Up" => [0, 0, 0, 1, 4],
+        "Alt + Scroll Down" => [0, 0, 0, 255, 4],
         _ => return Err(format!("Unsupported mouse action: {action}")),
     };
 
@@ -145,6 +151,26 @@ pub fn commit_payload() -> [u8; 8] {
 
 pub fn led_commit_payload() -> [u8; 8] {
     [0xAA, 0xA1, 0, 0, 0, 0, 0, 0]
+}
+
+pub fn system_shortcut(action: &str) -> Option<&'static [&'static str]> {
+    match action {
+        "Lock Screen" => Some(&["Win", "L"]),
+        "Show Desktop" => Some(&["Win", "D"]),
+        "Task Manager" => Some(&["Ctrl", "Shift", "Esc"]),
+        "Screenshot" => Some(&["Win", "PrtSc"]),
+        "Snipping Tool" => Some(&["Win", "Shift", "S"]),
+        "File Explorer" => Some(&["Win", "E"]),
+        "Settings" => Some(&["Win", "I"]),
+        "Search" => Some(&["Win", "S"]),
+        "Run Dialog" => Some(&["Win", "R"]),
+        "Switch Window" => Some(&["Alt", "Tab"]),
+        "Close Window" => Some(&["Alt", "F4"]),
+        "New Virtual Desktop" => Some(&["Win", "Ctrl", "D"]),
+        "Next Virtual Desktop" => Some(&["Win", "Ctrl", "Right"]),
+        "Previous Virtual Desktop" => Some(&["Win", "Ctrl", "Left"]),
+        _ => None,
+    }
 }
 
 pub fn media_action(value: &str) -> Option<MediaAction> {
