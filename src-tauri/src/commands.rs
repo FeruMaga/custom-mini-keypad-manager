@@ -35,17 +35,11 @@ pub fn apply_assignment(
     control: String,
     assignment: AssignmentPayload,
 ) -> Result<ApplyResult, String> {
-    
-    log::info!(
-        "apply_assignment control={control} category={}",
-        assignment.category
-    );
 
     let api = hidapi::HidApi::new().map_err(|error| error.to_string())?;
     let hid_device = device::open_configuration_device(&api)?;
     let report_id = device::negotiate_report_id(&hid_device)?;
     let control = control_from_id(&control)?;
-    log::info!("resolved control id={}", control.id());
 
     if report_id != 0 {
         device::write_payload(

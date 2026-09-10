@@ -60,14 +60,6 @@ pub fn probe() -> Result<DeviceProbe, String> {
 
 pub fn open_configuration_device(api: &HidApi) -> Result<HidDevice, String> {
     let info = find_device_info(api).ok_or("Mini keyboard configuration interface not found")?;
- 
-    log::info!(
-        "opening HID device path={} vendor={:#06x} product={:#06x} interface_matched={}",
-        info.path().to_string_lossy(),
-        info.vendor_id(),
-        info.product_id(),
-        is_configuration_interface(info)
-    );
 
     info.open_device(api).map_err(|error| error.to_string())
 }
@@ -76,7 +68,6 @@ pub fn negotiate_report_id(device: &HidDevice) -> Result<u8, String> {
     for report_id in REPORT_ID_CANDIDATES {
         match write_payload(device, report_id, [0; 8]) {
             Ok(()) => {
-                log::info!("negotiated report_id={report_id}");
                 return Ok(report_id);
             }
             Err(error) => log::warn!("report_id={report_id} candidate failed: {error}"),
@@ -94,7 +85,6 @@ pub fn write_payload(device: &HidDevice, report_id: u8, payload: [u8; 8]) -> Res
     report[1..1 + payload.len()].copy_from_slice(&payload);
 
     let written = device.write(&report).map_err(|error| error.to_string())?;
-    log::info!("wrote report_id={report_id} payload={payload:?} written={written}");
     if written == 0 {
         return Err("HID write returned zero bytes".into());
     }
