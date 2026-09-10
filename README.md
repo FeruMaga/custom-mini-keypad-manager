@@ -14,7 +14,6 @@ The UI lets you select each key or dial action, assign a command, store the prof
 
 ![Application screenshot](docs/screenshot.png)
 
-
 ## Hardware
 
 The app targets compatible HID mini keypads with the following USB identifiers:
