@@ -25,5 +25,5 @@ export const KEYBOARD_ROWS = [
   ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Shift'],
   ['Insert', 'Home', 'Page Up', 'Delete', 'End', 'Page Down', 'Up'],
   ['Left', 'Down', 'Right', 'Num Lock'],
-  ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Win', 'Menu', 'Ctrl'],
+  ['Space', 'Menu'],
 ]
