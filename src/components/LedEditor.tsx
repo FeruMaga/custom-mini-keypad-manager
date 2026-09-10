@@ -1,4 +1,4 @@
-import { LED_MODES } from '../utils/led'
+import { LED_MODES, LED_MODE_LABELS } from '../utils/led'
 import type { LedMode, LedSettings } from '../utils/led'
 import '../styles/led.css'
 
@@ -11,7 +11,7 @@ export function LedEditor({ value, onChange }: LedEditorProps) {
   return (
     <div className="led-editor">
       <h2>LED Mode</h2>
-      <p className="helper">Choose one of the three lighting modes exposed by the original app.</p>
+      <p className="helper">Choose one of the three lighting modes.</p>
       <div className="led-modes" role="group" aria-label="LED mode">
         {LED_MODES.map((mode) => (
           <button
@@ -20,7 +20,7 @@ export function LedEditor({ value, onChange }: LedEditorProps) {
             className={value.mode === mode ? 'active' : ''}
             onClick={() => onChange({ mode: mode as LedMode })}
           >
-            Mode {mode}
+            {LED_MODE_LABELS[mode]}
           </button>
         ))}
       </div>
