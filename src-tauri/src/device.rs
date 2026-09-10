@@ -60,28 +60,46 @@ pub fn probe() -> Result<DeviceProbe, String> {
 
 pub fn open_configuration_device(api: &HidApi) -> Result<HidDevice, String> {
     let info = find_device_info(api).ok_or("Mini keyboard configuration interface not found")?;
+ 
+    log::info!(
+        "opening HID device path={} vendor={:#06x} product={:#06x} interface_matched={}",
+        info.path().to_string_lossy(),
+        info.vendor_id(),
+        info.product_id(),
+        is_configuration_interface(info)
+    );
+
     info.open_device(api).map_err(|error| error.to_string())
 }
 
 pub fn negotiate_report_id(device: &HidDevice) -> Result<u8, String> {
     for report_id in REPORT_ID_CANDIDATES {
-        if write_payload(device, report_id, [0; 8]).is_ok() {
-            return Ok(report_id);
+        match write_payload(device, report_id, [0; 8]) {
+            Ok(()) => {
+                log::info!("negotiated report_id={report_id}");
+                return Ok(report_id);
+            }
+            Err(error) => log::warn!("report_id={report_id} candidate failed: {error}"),
         }
     }
 
     Err("Could not negotiate HID report id".into())
 }
 
+const OUTPUT_REPORT_LEN: usize = 64;
+
 pub fn write_payload(device: &HidDevice, report_id: u8, payload: [u8; 8]) -> Result<(), String> {
-    let mut report = [0u8; 9];
+    let mut report = [0u8; 1 + OUTPUT_REPORT_LEN];
     report[0] = report_id;
-    report[1..].copy_from_slice(&payload);
+    report[1..1 + payload.len()].copy_from_slice(&payload);
 
     let written = device.write(&report).map_err(|error| error.to_string())?;
+    log::info!("wrote report_id={report_id} payload={payload:?} written={written}");
     if written == 0 {
         return Err("HID write returned zero bytes".into());
     }
+
+    std::thread::sleep(std::time::Duration::from_millis(20));
 
     Ok(())
 }
