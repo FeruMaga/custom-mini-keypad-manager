@@ -1,11 +1,11 @@
 @media (min-width: 1500px) {
   .workspace {
-    gap: 45px;
-    padding: 40px;
+    gap: 38px;
+    padding: 28px 34px;
   }
 
   .editor-panel {
-    padding: 40px;
+    padding: 30px;
   }
 
   .device-scene {
@@ -14,34 +14,45 @@
   }
 
   .editor-heading h1 {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   .keyboard-row button {
-    padding: 12px 0;
-    font-size: 12px;
+    padding: 10px 0;
+    font-size: 11px;
   }
 
   .categories button {
-    padding: 18px 23px;
+    padding: 15px 20px;
   }
 }
 
 @media (max-width: 1150px) {
   .workspace {
-    grid-template-columns: 250px minmax(0, 1fr);
-    padding: 24px 18px;
-    gap: 20px;
+    grid-template-columns: minmax(310px, 0.62fr) minmax(0, 1fr);
+    padding: 18px 16px;
+    gap: 16px;
+  }
+
+  .device-panel {
+    overflow: hidden;
+    align-self: center;
   }
 
   .device-scene {
-    height: 520px;
-    transform: scale(0.78);
-    margin: 0 -40px;
+    height: 500px;
+    padding-top: 26px;
+    transform: scale(0.68);
+    transform-origin: center;
+    margin: 0;
+  }
+
+  .device {
+    transform: translateX(16px) rotateX(29deg) rotateZ(17deg);
   }
 
   .editor-panel {
-    padding: 25px;
+    padding: 20px;
   }
 
   .categories {
@@ -55,24 +66,42 @@
   }
 
   .editor-heading h1 {
-    font-size: 30px;
+    font-size: 27px;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .workspace {
     grid-template-columns: 1fr;
-    gap: 22px;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px 14px;
   }
 
   .device-panel {
-    min-height: auto;
+    height: 430px;
+    max-height: 430px;
+    overflow: hidden;
+    align-self: stretch;
+    justify-content: flex-start;
+  }
+
+  .editor-panel {
+    max-height: none;
   }
 
   .device-scene {
     height: 430px;
-    transform: scale(0.65);
-    margin: -45px 0 -25px;
+    padding-top: 52px;
+    align-items: flex-start;
+    transform: scale(0.72);
+    transform-origin: top center;
+    margin: 0;
+  }
+
+  .device {
+    transform: translateX(0) rotateX(29deg) rotateZ(17deg);
   }
 
   .device-caption {
@@ -95,6 +124,11 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: 10px;
+  }
+
+  .editor-heading {
+    display: block;
   }
 
   .dial-mode-switch button {
@@ -109,7 +143,20 @@
 
 @media (max-width: 480px) {
   .workspace {
-    padding: 18px 10px;
+    padding: 10px;
+  }
+
+  .device-panel {
+    height: 370px;
+    max-height: 370px;
+  }
+
+  .device-scene {
+    height: 370px;
+    padding-top: 42px;
+    align-items: flex-start;
+    transform: scale(0.58);
+    margin-bottom: 0;
   }
 
   .editor-panel {

@@ -44,7 +44,8 @@ export function ShortcutEditor({
   }>({ selected: '', state: 'idle', message: '' })
   const dialSelected = selected.startsWith('Dial')
   const selectedLabel = dialSelected ? `dial ${DIAL_LABELS[selected].toLowerCase()}` : selected
-  const category = categoryChoice?.selected === selected ? categoryChoice.category : assignment.category
+  const category =
+    categoryChoice?.selected === selected ? categoryChoice.category : assignment.category
   const keys = assignment.category === category ? assignment.keys : []
   const applyState = applyFeedback.selected === selected ? applyFeedback.state : 'idle'
   const applyMessage = applyFeedback.selected === selected ? applyFeedback.message : ''
@@ -53,7 +54,9 @@ export function ShortcutEditor({
     setApplyFeedback({ selected, state: 'applying', message: '' })
 
     const current: Assignment =
-      category === 'LED' ? { category, keys: [], led: normalizeLed(assignment.led) } : { category, keys }
+      category === 'LED'
+        ? { category, keys: [], led: normalizeLed(assignment.led) }
+        : { category, keys }
 
     try {
       const result = await onApply(current)
@@ -79,20 +82,20 @@ export function ShortcutEditor({
           <p>
             Assign a shortcut to <strong>{selectedLabel}</strong>
           </p>
-          {dialSelected && (
-            <div className="dial-mode-switch" role="group" aria-label="Dial control">
-              {DIAL_CONTROLS.map((control) => (
-                <button
-                  key={control.id}
-                  aria-pressed={selected === control.id}
-                  onClick={() => onSelectControl(control.id)}
-                >
-                  {control.label}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
+        {dialSelected && (
+          <div className="dial-mode-switch" role="group" aria-label="Dial control">
+            {DIAL_CONTROLS.map((control) => (
+              <button
+                key={control.id}
+                aria-pressed={selected === control.id}
+                onClick={() => onSelectControl(control.id)}
+              >
+                {control.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       <div className="categories" role="group" aria-label="Action category">
         {CATEGORIES.map((item) => (

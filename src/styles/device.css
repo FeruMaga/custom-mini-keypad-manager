@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-self: start;
-  min-height: calc(100vh - 112px);
+  max-height: calc(100vh - 92px);
+  overflow: visible;
   text-align: center;
   min-width: 0;
 }
@@ -38,7 +39,7 @@
     0 15px 0 #303237,
     0 25px 0 #0a0b0d,
     10px 45px 35px #000b;
-  transform: rotateX(29deg) rotateZ(17deg);
+  transform: translateX(34px) rotateX(29deg) rotateZ(17deg);
   transform-style: flat;
 }
 
