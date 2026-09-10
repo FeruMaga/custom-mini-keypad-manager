@@ -111,3 +111,7 @@ npm run lint
 cd src-tauri
 cargo check
 ```
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
