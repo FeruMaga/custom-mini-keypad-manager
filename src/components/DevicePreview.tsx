@@ -16,7 +16,7 @@ export function DevicePreview({ selected, onSelect }: DevicePreviewProps) {
             className={`knob ${dialSelected ? 'selected' : ''}`}
             aria-label="Configure dial"
             aria-pressed={dialSelected}
-            onClick={() => onSelect('Dial click')}
+            onClick={() => onSelect('Dial')}
           >
             <span />
           </button>
