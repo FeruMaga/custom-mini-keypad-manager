@@ -1,4 +1,5 @@
 export function Icon({ name }: { name: string }) {
+  
   const paths: Record<string, string> = {
     Keyboard: 'M3 5h18v14H3z M6 9h1m3 0h1m3 0h1m3 0h1M6 12h1m3 0h1m3 0h1m3 0h1M7 16h10',
     Media: 'M9 7l8 5-8 5z M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0',
@@ -10,6 +11,7 @@ export function Icon({ name }: { name: string }) {
     mute: 'M3 9h4l5-4v14l-5-4H3z M17 9l5 6m0-6-5 6',
     play: 'M3 5l9 7-9 7z M16 5v14m5-14v14',
   }
+
   return (
     <svg
       width="24"

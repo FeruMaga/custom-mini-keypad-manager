@@ -3,10 +3,12 @@ import { CATEGORIES } from '../data/actions'
 import type { Assignment, Assignments } from '../types/keypad'
 
 const STORAGE_KEY = 'mini-keypad-profiles-v1'
+
 const DEFAULT_ASSIGNMENTS: Assignments = {
   K1: { category: 'Keyboard', keys: ['Ctrl', 'C'] },
 }
 const EMPTY_ASSIGNMENT: Assignment = { category: 'Keyboard', keys: [] }
+
 const DIAL_CONTROLS = ['Dial click', 'Dial left', 'Dial right']
 
 function isDialControl(id: string) {
@@ -78,7 +80,6 @@ export function useAssignments() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
     } catch {
-      // Keep editing responsive even if local storage is unavailable.
     }
   }
   return { selected, select, update, assignment: assignments[selected] || EMPTY_ASSIGNMENT }

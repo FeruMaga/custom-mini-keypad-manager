@@ -1,10 +1,12 @@
 import type { Assignment } from '../types/keypad'
 import { MODIFIERS as modifiers } from '../data/actions'
 import { KEYBOARD_ROWS as rows } from '../data/keyboard'
+
 interface KeyboardEditorProps {
   keys: string[]
   onChange: (assignment: Assignment) => void
 }
+
 export function KeyboardEditor({ keys, onChange: update }: KeyboardEditorProps) {
   function chooseKey(key: string) {
     const next = modifiers.includes(key)
@@ -18,6 +20,7 @@ export function KeyboardEditor({ keys, onChange: update }: KeyboardEditorProps) 
       : [...keys.filter((item) => modifiers.includes(item)), key]
     update({ category: 'Keyboard', keys: next })
   }
+  
   return (
     <>
       <div className="modifier-bar">
