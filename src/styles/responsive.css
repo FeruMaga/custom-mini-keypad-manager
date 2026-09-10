@@ -25,10 +25,6 @@
   .categories button {
     padding: 18px 23px;
   }
-
-  .device-instruction {
-    margin-top: 42px;
-  }
 }
 
 @media (max-width: 1150px) {
@@ -39,8 +35,9 @@
   }
 
   .device-scene {
+    height: 520px;
     transform: scale(0.78);
-    margin: -50px -40px;
+    margin: 0 -40px;
   }
 
   .editor-panel {
@@ -68,14 +65,14 @@
     gap: 22px;
   }
 
+  .device-panel {
+    min-height: auto;
+  }
+
   .device-scene {
     height: 430px;
     transform: scale(0.65);
     margin: -45px 0 -25px;
-  }
-
-  .device-instruction {
-    margin: 6px 0 12px;
   }
 
   .device-caption {
@@ -94,12 +91,19 @@
     flex: 1;
   }
 
-  .app-header {
-    padding: 0 20px;
+  .dial-mode-switch {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
-  .profile-label {
-    display: none;
+  .dial-mode-switch button {
+    flex: 1;
+    text-align: center;
+  }
+
+  .app-header {
+    padding: 0 20px;
   }
 }
 
@@ -141,5 +145,11 @@
 
   .brand {
     font-size: 16px;
+  }
+
+  .connection-badge {
+    min-width: auto;
+    padding: 7px 10px;
+    font-size: 10px;
   }
 }

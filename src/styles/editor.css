@@ -9,6 +9,10 @@
   min-width: 0;
 }
 
+.editor-title-copy {
+  min-width: 0;
+}
+
 .editor-heading h1 {
   font-size: 36px;
   line-height: 1.2;
@@ -20,6 +24,36 @@
   color: #a9b2c5;
   font-size: 18px;
   margin-top: 10px;
+}
+
+.dial-mode-switch {
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 5px;
+  border: 1px solid #343b49;
+  border-radius: 12px;
+  background: #20252d;
+  box-shadow: inset 0 1px 0 #ffffff05;
+}
+
+.dial-mode-switch button {
+  min-width: 102px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #b8c2d4;
+  padding: 10px 13px;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.dial-mode-switch button[aria-pressed='true'] {
+  background: linear-gradient(125deg, #4e586e, #414a5e);
+  border-color: #65708944;
+  color: white;
+  box-shadow: inset 0 1px 1px #ffffff0a;
 }
 
 .categories {
@@ -187,37 +221,6 @@ kbd {
   color: #909caf;
   margin-top: 14px;
   line-height: 1.6;
-}
-
-.editor-footer {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  border-top: 1px solid #ffffff09;
-  margin-top: 28px;
-  padding-top: 20px;
-}
-
-.editor-footer p {
-  font-size: 10px;
-  line-height: 1.6;
-  color: #98a4b8;
-}
-
-.status-dot {
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  background: #6885b2;
-  flex-shrink: 0;
-}
-
-.profile-label {
-  margin-left: auto;
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  color: #909caf;
-  white-space: nowrap;
 }
 
 .action-grid {

@@ -3,6 +3,7 @@ interface DevicePreviewProps {
   onSelect: (id: string) => void
 }
 export function DevicePreview({ selected, onSelect }: DevicePreviewProps) {
+  const dialSelected = selected.startsWith('Dial')
   return (
     <section className="device-panel" aria-label="Select a keypad control">
       <div className="device-scene">
@@ -12,10 +13,10 @@ export function DevicePreview({ selected, onSelect }: DevicePreviewProps) {
           <span className="screw s3" />
           <span className="screw s4" />
           <button
-            className={`knob ${selected === 'Dial press' ? 'selected' : ''}`}
-            aria-label="Configure dial press"
-            aria-pressed={selected === 'Dial press'}
-            onClick={() => onSelect('Dial press')}
+            className={`knob ${dialSelected ? 'selected' : ''}`}
+            aria-label="Configure dial"
+            aria-pressed={dialSelected}
+            onClick={() => onSelect('Dial click')}
           >
             <span />
           </button>
@@ -36,15 +37,6 @@ export function DevicePreview({ selected, onSelect }: DevicePreviewProps) {
             ))}
           </div>
         </div>
-      </div>
-      <p className="device-instruction">Select a key to assign a shortcut</p>
-      <div className="dial-controls">
-        <button onClick={() => onSelect('Dial left')} aria-pressed={selected === 'Dial left'}>
-          ↶ Rotate left
-        </button>
-        <button onClick={() => onSelect('Dial right')} aria-pressed={selected === 'Dial right'}>
-          ↷ Rotate right
-        </button>
       </div>
       <span className="device-caption">6 KEYS · 1 DIAL</span>
     </section>

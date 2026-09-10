@@ -1,7 +1,11 @@
 .device-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start;
+  min-height: calc(100vh - 132px);
   text-align: center;
   min-width: 0;
-  align-self: center;
 }
 
 .device-scene {
@@ -10,7 +14,7 @@
   align-items: center;
   justify-content: center;
   perspective: 1100px;
-  padding-top: 50px;
+  padding-top: 35px;
 }
 
 .device {
@@ -78,23 +82,27 @@
 
 .knob {
   position: absolute;
-  left: 99px;
-  top: -52px;
-  width: 100px;
-  height: 113px;
+  left: 103px;
+  top: -29px;
+  width: 94px;
+  height: 98px;
   border: 2px solid #85878a;
-  border-radius: 48% 48% 38% 38%;
+  border-radius: 46% 46% 35% 35%;
   background: repeating-linear-gradient(90deg, #101113 0, #101113 5px, #33363b 7px, #101113 10px);
-  box-shadow: 5px 12px 7px #0007;
+  box-shadow:
+    inset 0 -8px 10px #0009,
+    5px 13px 8px #0008;
+  transform: rotateX(7deg) rotateZ(-1deg);
+  transform-origin: 50% 80%;
   z-index: 2;
 }
 
 .knob > span {
   position: absolute;
-  top: -3px;
-  left: -2px;
-  width: 100px;
-  height: 73px;
+  top: -8px;
+  left: -3px;
+  width: 96px;
+  height: 66px;
   border: 2px solid #a8a8a8;
   border-radius: 50%;
   background: conic-gradient(
@@ -108,8 +116,10 @@
     #26282a
   );
   box-shadow:
-    0 5px 0 #08090a,
-    0 7px 0 #929599;
+    inset 0 3px 7px #ffffff45,
+    inset 0 -10px 13px #0007,
+    0 6px 0 #08090a,
+    0 8px 0 #929599;
 }
 
 .knob > span:after {
@@ -118,7 +128,7 @@
   width: 4px;
   height: 18px;
   right: 21px;
-  top: 8px;
+  top: 7px;
   background: #f4f5f6;
   transform: rotate(33deg);
 }
@@ -206,38 +216,12 @@
   left: 50%;
 }
 
-.device-instruction {
-  font-size: 14px;
-  color: #abb3c4;
-  margin: 22px 0;
-}
-
-.dial-controls {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-
-.dial-controls button {
-  border: 1px solid #ffffff09;
-  background: #23272d;
-  color: #aeb6c6;
-  border-radius: 7px;
-  padding: 8px 12px;
-  font-size: 12px;
-}
-
-.dial-controls button[aria-pressed='true'] {
-  background: #245bb7;
-  color: white;
-}
-
 .device-caption {
   display: block;
   font-size: 9px;
   color: #8994a7;
   letter-spacing: 2.2px;
-  margin-top: 17px;
+  margin-top: 26px;
 }
 
 /* Decorative labels cannot intercept clicks on neighboring controls. */

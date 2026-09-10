@@ -8,20 +8,48 @@ import { Icon } from './Icon'
 import { KeyboardEditor } from './KeyboardEditor'
 interface ShortcutEditorProps {
   selected: string
+  onSelectControl: (id: string) => void
   assignment: Assignment
-  status: string
   onChange: (assignment: Assignment) => void
 }
-export function ShortcutEditor({ selected, assignment, status, onChange }: ShortcutEditorProps) {
+const DIAL_CONTROLS = [
+  { id: 'Dial click', label: 'Click' },
+  { id: 'Dial left', label: 'Rotate left' },
+  { id: 'Dial right', label: 'Rotate right' },
+]
+
+export function ShortcutEditor({
+  selected,
+  onSelectControl,
+  assignment,
+  onChange,
+}: ShortcutEditorProps) {
   const [category, setCategory] = useState<Category>('Keyboard')
+  const dialSelected = selected.startsWith('Dial')
+  const selectedLabel = dialSelected ? 'dial' : selected
   const keys = assignment.category === category ? assignment.keys : []
   return (
     <section className="editor-panel">
       <div className="editor-heading">
-        <h1>Choose Shortcut</h1>
-        <p>
-          Assign a shortcut to <strong>{selected}</strong>
-        </p>
+        <div className="editor-title-copy">
+          <h1>Choose Shortcut</h1>
+          <p>
+            Assign a shortcut to <strong>{selectedLabel}</strong>
+          </p>
+          {dialSelected && (
+            <div className="dial-mode-switch" role="group" aria-label="Dial control">
+              {DIAL_CONTROLS.map((control) => (
+                <button
+                  key={control.id}
+                  aria-pressed={selected === control.id}
+                  onClick={() => onSelectControl(control.id)}
+                >
+                  {control.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
       <div className="categories" role="group" aria-label="Action category">
         {CATEGORIES.map((item) => (
@@ -94,11 +122,6 @@ export function ShortcutEditor({ selected, assignment, status, onChange }: Short
           </>
         )}
       </div>
-      <footer className="editor-footer">
-        <span className="status-dot" />
-        <p role="status">{status}</p>
-        <span className="profile-label">DEFAULT PROFILE</span>
-      </footer>
     </section>
   )
 }
