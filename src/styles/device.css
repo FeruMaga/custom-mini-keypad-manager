@@ -164,6 +164,10 @@
   transform-style: flat;
 }
 
+.device-key.selected {
+  z-index: 4;
+}
+
 .key-cap {
   position: absolute;
   inset: 0;
@@ -205,6 +209,7 @@
   padding: 4px 12px;
   font-size: 14px;
   transform: rotate(-17deg);
+  z-index: 5;
 }
 
 .key-tag:after {
