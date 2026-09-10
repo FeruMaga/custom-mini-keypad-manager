@@ -7,7 +7,6 @@ const DEFAULT_ASSIGNMENTS: Assignments = {
   K1: { category: 'Keyboard', keys: ['Ctrl', 'C'] },
 }
 const EMPTY_ASSIGNMENT: Assignment = { category: 'Keyboard', keys: [] }
-const DEFAULT_STATUS = 'Configurations stay on this computer. USB is not connected.'
 function isAssignment(value: unknown): value is Assignment {
   if (!value || typeof value !== 'object') return false
   const candidate = value as Partial<Assignment>
@@ -36,10 +35,8 @@ function loadAssignments(): Assignments {
 export function useAssignments() {
   const [assignments, setAssignments] = useState(loadAssignments)
   const [selected, setSelected] = useState('K1')
-  const [status, setStatus] = useState(DEFAULT_STATUS)
   function select(id: string) {
     setSelected(id)
-    setStatus(DEFAULT_STATUS)
   }
   function update(assignment: Assignment) {
     const next = {
@@ -49,10 +46,9 @@ export function useAssignments() {
     setAssignments(next)
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
-      setStatus(`Saved locally for ${selected}. USB is not connected.`)
     } catch {
-      setStatus('Local storage is unavailable. Changes will be lost when you close the app.')
+      // Keep editing responsive even if local storage is unavailable.
     }
   }
-  return { selected, select, update, status, assignment: assignments[selected] || EMPTY_ASSIGNMENT }
+  return { selected, select, update, assignment: assignments[selected] || EMPTY_ASSIGNMENT }
 }

@@ -1,5 +1,13 @@
 import { PROJECT_NAME } from '../data/actions'
-export function AppHeader() {
+import type { ConnectionStatus } from '../hooks/useDeviceConnection'
+
+interface AppHeaderProps {
+  connectionStatus: ConnectionStatus
+}
+
+export function AppHeader({ connectionStatus }: AppHeaderProps) {
+  const connected = connectionStatus === 'connected'
+
   return (
     <header className="app-header">
       <div className="brand">
@@ -10,6 +18,9 @@ export function AppHeader() {
           <i />
         </span>
         <span>{PROJECT_NAME}</span>
+      </div>
+      <div className={`connection-badge ${connectionStatus}`} role="status">
+        {connected ? 'Connected' : 'Disconnected'}
       </div>
     </header>
   )
