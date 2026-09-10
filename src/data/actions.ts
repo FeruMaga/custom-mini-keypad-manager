@@ -48,17 +48,5 @@ export const ACTIONS: Record<Exclude<Category, 'Keyboard'>, string[]> = {
     'Move Left',
     'Move Right',
   ],
-  LED: [
-    'Toggle Lighting',
-    'Lighting On',
-    'Lighting Off',
-    'Brightness Up',
-    'Brightness Down',
-    'Next Effect',
-    'Previous Effect',
-    'Static Color',
-    'Rainbow',
-    'Wave',
-    'Reactive',
-  ],
+  LED: ['Mode 0', 'Mode 1', 'Mode 2'],
 }
