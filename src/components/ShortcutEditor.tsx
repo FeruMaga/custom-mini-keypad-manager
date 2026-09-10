@@ -6,28 +6,65 @@ import type { Assignment } from '../types/keypad'
 import { ACTIONS, CATEGORIES } from '../data/actions'
 import { Icon } from './Icon'
 import { KeyboardEditor } from './KeyboardEditor'
+
 interface ShortcutEditorProps {
   selected: string
   onSelectControl: (id: string) => void
   assignment: Assignment
   onChange: (assignment: Assignment) => void
+  onApply: () => Promise<{ reportId: number }>
 }
+
 const DIAL_CONTROLS = [
   { id: 'Dial click', label: 'Click' },
   { id: 'Dial left', label: 'Rotate left' },
   { id: 'Dial right', label: 'Rotate right' },
 ]
 
+const DIAL_LABELS = Object.fromEntries(DIAL_CONTROLS.map((control) => [control.id, control.label]))
+
 export function ShortcutEditor({
   selected,
   onSelectControl,
   assignment,
   onChange,
+  onApply,
 }: ShortcutEditorProps) {
-  const [category, setCategory] = useState<Category>('Keyboard')
+  const [categoryChoice, setCategoryChoice] = useState<{
+    selected: string
+    category: Category
+  } | null>(null)
+  const [applyFeedback, setApplyFeedback] = useState<{
+    selected: string
+    state: 'idle' | 'applying' | 'success' | 'error'
+    message: string
+  }>({ selected: '', state: 'idle', message: '' })
   const dialSelected = selected.startsWith('Dial')
-  const selectedLabel = dialSelected ? 'dial' : selected
+  const selectedLabel = dialSelected ? `dial ${DIAL_LABELS[selected].toLowerCase()}` : selected
+  const category = categoryChoice?.selected === selected ? categoryChoice.category : assignment.category
   const keys = assignment.category === category ? assignment.keys : []
+  const applyState = applyFeedback.selected === selected ? applyFeedback.state : 'idle'
+  const applyMessage = applyFeedback.selected === selected ? applyFeedback.message : ''
+
+  async function applyToDevice() {
+    setApplyFeedback({ selected, state: 'applying', message: '' })
+
+    try {
+      const result = await onApply()
+      setApplyFeedback({
+        selected,
+        state: 'success',
+        message: `Applied to device using report ${result.reportId}`,
+      })
+    } catch (error) {
+      setApplyFeedback({
+        selected,
+        state: 'error',
+        message: error instanceof Error ? error.message : String(error),
+      })
+    }
+  }
+
   return (
     <section className="editor-panel">
       <div className="editor-heading">
@@ -58,7 +95,8 @@ export function ShortcutEditor({
             aria-pressed={category === item}
             className={category === item ? 'active' : ''}
             onClick={() => {
-              setCategory(item)
+              setCategoryChoice({ selected, category: item })
+              setApplyFeedback({ selected, state: 'idle', message: '' })
             }}
           >
             <Icon name={item} />
@@ -121,6 +159,14 @@ export function ShortcutEditor({
             )}
           </>
         )}
+      </div>
+      <div className="editor-actions">
+        <p className={`apply-message ${applyState}`} role="status">
+          {applyMessage}
+        </p>
+        <button className="apply-button" disabled={applyState === 'applying'} onClick={applyToDevice}>
+          {applyState === 'applying' ? 'Applying...' : 'Apply to device'}
+        </button>
       </div>
     </section>
   )
