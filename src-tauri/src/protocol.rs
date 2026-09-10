@@ -34,6 +34,7 @@ pub enum MediaAction {
     Mute,
     VolumeUp,
     VolumeDown,
+    MicrophoneMute,
 }
 
 impl MediaAction {
@@ -45,6 +46,8 @@ impl MediaAction {
             Self::Mute => 226,
             Self::VolumeUp => 233,
             Self::VolumeDown => 234,
+            // USB HID Consumer Control usage 0x2F, natively toggled by Windows 10/11.
+            Self::MicrophoneMute => 47,
         }
     }
 }
@@ -181,6 +184,7 @@ pub fn media_action(value: &str) -> Option<MediaAction> {
         "Mute" => Some(MediaAction::Mute),
         "Volume Up" => Some(MediaAction::VolumeUp),
         "Volume Down" => Some(MediaAction::VolumeDown),
+        "Microphone Mute" => Some(MediaAction::MicrophoneMute),
         _ => None,
     }
 }

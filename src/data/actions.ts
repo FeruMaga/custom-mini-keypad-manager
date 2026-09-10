@@ -12,6 +12,7 @@ export const ACTIONS: Record<'Media' | 'System' | 'Mouse', string[]> = {
     'Lock Screen',
     'Show Desktop',
     'Task Manager',
+    'Microphone Mute',
     'Screenshot',
     'Snipping Tool',
     'File Explorer',
