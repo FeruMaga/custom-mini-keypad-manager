@@ -20,7 +20,8 @@ function App() {
           onSelectControl={select}
           assignment={assignment}
           onChange={update}
-          onApply={() => applyAssignment(selected, assignment)}
+          onApply={(current) => applyAssignment(selected, current)}
+          connectionStatus={connectionStatus}
         />
       </main>
     </div>

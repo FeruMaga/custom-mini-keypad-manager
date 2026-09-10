@@ -6,13 +6,15 @@ import type { Assignment } from '../types/keypad'
 import { ACTIONS, CATEGORIES } from '../data/actions'
 import { Icon } from './Icon'
 import { KeyboardEditor } from './KeyboardEditor'
+import type { ConnectionStatus } from '../hooks/useDeviceConnection'
 
 interface ShortcutEditorProps {
   selected: string
   onSelectControl: (id: string) => void
   assignment: Assignment
   onChange: (assignment: Assignment) => void
-  onApply: () => Promise<{ reportId: number }>
+  onApply: (assignment: Assignment) => Promise<{ reportId: number }>
+  connectionStatus: ConnectionStatus
 }
 
 const DIAL_CONTROLS = [
@@ -29,6 +31,7 @@ export function ShortcutEditor({
   assignment,
   onChange,
   onApply,
+  connectionStatus,
 }: ShortcutEditorProps) {
   const [categoryChoice, setCategoryChoice] = useState<{
     selected: string
@@ -49,8 +52,11 @@ export function ShortcutEditor({
   async function applyToDevice() {
     setApplyFeedback({ selected, state: 'applying', message: '' })
 
+    const current: Assignment =
+      category === 'LED' ? { category, keys: [], led: normalizeLed(assignment.led) } : { category, keys }
+
     try {
-      const result = await onApply()
+      const result = await onApply(current)
       setApplyFeedback({
         selected,
         state: 'success',
@@ -164,7 +170,12 @@ export function ShortcutEditor({
         <p className={`apply-message ${applyState}`} role="status">
           {applyMessage}
         </p>
-        <button className="apply-button" disabled={applyState === 'applying'} onClick={applyToDevice}>
+        <button
+          className="apply-button"
+          disabled={applyState === 'applying' || connectionStatus !== 'connected'}
+          title={connectionStatus !== 'connected' ? 'Connect the device to apply' : undefined}
+          onClick={applyToDevice}
+        >
           {applyState === 'applying' ? 'Applying...' : 'Apply to device'}
         </button>
       </div>
