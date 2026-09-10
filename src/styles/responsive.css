@@ -1,0 +1,202 @@
+@media (min-width: 1500px) {
+  .workspace {
+    gap: 38px;
+    padding: 28px 34px;
+  }
+
+  .editor-panel {
+    padding: 30px;
+  }
+
+  .device-scene {
+    transform: scale(1.13);
+    margin-bottom: 30px;
+  }
+
+  .editor-heading h1 {
+    font-size: 36px;
+  }
+
+  .keyboard-row button {
+    padding: 10px 0;
+    font-size: 11px;
+  }
+
+  .categories button {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .workspace {
+    grid-template-columns: minmax(310px, 0.62fr) minmax(0, 1fr);
+    padding: 18px 16px;
+    gap: 16px;
+  }
+
+  .device-panel {
+    overflow: hidden;
+    align-self: center;
+  }
+
+  .device-scene {
+    height: 500px;
+    padding-top: 26px;
+    transform: scale(0.68);
+    transform-origin: center;
+    margin: 0;
+  }
+
+  .device {
+    transform: translateX(16px) rotateX(29deg) rotateZ(17deg);
+  }
+
+  .editor-panel {
+    padding: 20px;
+  }
+
+  .categories {
+    gap: 8px;
+  }
+
+  .categories button {
+    padding: 12px;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .editor-heading h1 {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px 14px;
+  }
+
+  .device-panel {
+    height: 430px;
+    max-height: 430px;
+    overflow: hidden;
+    align-self: stretch;
+    justify-content: flex-start;
+  }
+
+  .editor-panel {
+    max-height: none;
+  }
+
+  .device-scene {
+    height: 430px;
+    padding-top: 52px;
+    align-items: flex-start;
+    transform: scale(0.72);
+    transform-origin: top center;
+    margin: 0;
+  }
+
+  .device {
+    transform: translateX(0) rotateX(29deg) rotateZ(17deg);
+  }
+
+  .device-caption {
+    display: none;
+  }
+
+  .editor-panel {
+    padding: 22px;
+  }
+
+  .categories {
+    margin: 22px 0;
+  }
+
+  .categories button {
+    flex: 1;
+  }
+
+  .dial-mode-switch {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .editor-heading {
+    display: block;
+  }
+
+  .dial-mode-switch button {
+    flex: 1;
+    text-align: center;
+  }
+
+  .app-header {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .workspace {
+    padding: 10px;
+  }
+
+  .device-panel {
+    height: 370px;
+    max-height: 370px;
+  }
+
+  .device-scene {
+    height: 370px;
+    padding-top: 42px;
+    align-items: flex-start;
+    transform: scale(0.58);
+    margin-bottom: 0;
+  }
+
+  .editor-panel {
+    padding: 18px 12px;
+  }
+
+  .categories button {
+    flex-direction: column;
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+
+  .keyboard-row {
+    gap: 3px;
+  }
+
+  .keyboard-row button {
+    font-size: 8px;
+    padding: 11px 0;
+  }
+
+  .modifier-bar {
+    gap: 5px;
+  }
+
+  .modifier-bar button {
+    padding: 9px 12px;
+  }
+
+  .editor-heading h1 {
+    font-size: 28px;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .connection-badge {
+    min-width: auto;
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+}
