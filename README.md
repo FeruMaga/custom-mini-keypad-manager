@@ -36,7 +36,7 @@ npm run dev
 Run the desktop app with Tauri:
 
 ```bash
-npx tauri dev
+npm run tauri:dev
 ```
 
 Build the frontend:
@@ -48,5 +48,5 @@ npm run build
 Build the desktop bundle:
 
 ```bash
-npx tauri build
+npm run tauri:build
 ```

@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" index.html",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" index.html"
   },
